@@ -16,11 +16,6 @@ use Composer\XdebugHandler\Helpers\Logger;
 use Composer\XdebugHandler\Mocks\CoreMock;
 use Psr\Log\LogLevel;
 
-/**
- * We use PHP_BINARY which only became available in PHP 5.4
- *
- * @requires PHP 5.4
- */
 class StatusTest extends BaseTestCase
 {
     public function testSetLoggerProvidesOutput()

@@ -15,11 +15,6 @@ use Composer\XdebugHandler\Helpers\BaseTestCase;
 use Composer\XdebugHandler\Helpers\EnvHelper;
 use Composer\XdebugHandler\Mocks\CoreMock;
 
-/**
- * We use PHP_BINARY which only became available in PHP 5.4
- *
- * @requires PHP 5.4
- */
 class SettingsTest extends BaseTestCase
 {
     /**
@@ -32,10 +27,6 @@ class SettingsTest extends BaseTestCase
      */
     public function testGetRestartSettings($iniFunc, $scanDir, $phprc)
     {
-        if ($message = EnvHelper::shouldSkipTest($scanDir)) {
-            $this->markTestSkipped($message);
-        }
-
         $ini = EnvHelper::setInis($iniFunc, $scanDir, $phprc);
 
         $loaded = true;

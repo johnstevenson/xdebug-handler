@@ -21,13 +21,13 @@ class ClassTest extends TestCase
 {
     public function testConstructorThrowsOnEmptyEnvPrefix()
     {
-        $this->setException('RuntimeException');
+        $this->expectException('RuntimeException');
         new XdebugHandler('');
     }
 
     public function testConstructorThrowsOnInvalidEnvPrefix()
     {
-        $this->setException('RuntimeException');
+        $this->expectException('RuntimeException');
         /** @phpstan-ignore-next-line */
         new XdebugHandler(array('name'));
     }
@@ -57,7 +57,6 @@ class ClassTest extends TestCase
     /**
      * Test compatibility with 1.x for extending classes
      *
-     * @requires PHP 7.1
      * @dataProvider methodProvider
      */
     public function testNoTypeHintingOnMethod($method)
@@ -75,15 +74,5 @@ class ClassTest extends TestCase
         return array(
             array('restart'),
         );
-    }
-
-    private function setException($exception)
-    {
-        if (!method_exists($this, 'expectException')) {
-            /** @phpstan-ignore-next-line */
-            $this->setExpectedException($exception);
-        } else {
-            $this->expectException($exception);
-        }
     }
 }
